@@ -32,7 +32,7 @@ class TestLetting:
             reverse("lettings:letting",
                     kwargs={"letting_id": letting_fixture.id})
         )
-        assert response.status_code == 400
+        assert response.status_code == 200
         assert response.context["title"] == letting_fixture.title
         assert response.context["address"] == letting_fixture.address
         assert expected_title in response.content
