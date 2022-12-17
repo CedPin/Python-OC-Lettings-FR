@@ -49,7 +49,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: "TEST ENV VAR"
-          command: echo {$_USR}
+          command: echo $_USR - CIRCLE BRANCH = $CIRCLE_BRANCH
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
