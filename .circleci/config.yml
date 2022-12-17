@@ -50,6 +50,15 @@ jobs:
       - run:
           name: "TEST ENV VAR"
           command: echo $_USR - CIRCLE COMMIT = $CIRCLE_SHA1
+      - run:
+          name: Login docker
+          command: docker login -u $_USR -p $_PWD docker.io
+      - run:
+          name: Build docker image
+          command: docker build -t $_USR/oc-lettings:$CIRCLE_SHA1
+      - run:
+          name: Push docker image
+          command: docker push $_USR/oc-lettings:$CIRCLE_SHA1
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -59,4 +68,5 @@ workflows:
     jobs:
       - build-and-test
       - build-and-push-img:
+          requires: build-and-test
           context: oc_lettings
