@@ -42,6 +42,8 @@ jobs:
           # This assumes pytest is installed via the install-package step above
           command: pytest
   build-and-push-img:
+    docker:
+      - image: cimg/python:3.10.2
     steps:
       - checkout
       - run:
