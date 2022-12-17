@@ -48,11 +48,8 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: "TEST ENV VAR"
-          command: echo ${DOCKER_USR} - ${DOCKER_PWD} - CIRCLE COMMIT = $CIRCLE_SHA1
-      - run:
           name: Login docker
-          command: docker login -u ${DOCKER_USR} --password-stdin docker.io
+          command: echo ${DOCKER_PWD} | docker login -u ${DOCKER_USR} --password-stdin
       - run:
           name: Build docker image
           command: docker build -t ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1 .
