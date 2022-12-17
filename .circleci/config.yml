@@ -48,7 +48,7 @@ jobs:
       - checkout
       - run:
           name: "TEST ENV VAR"
-          command: echo $_USR
+          command: echo $_URS
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
