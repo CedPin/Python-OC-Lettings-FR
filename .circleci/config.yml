@@ -68,5 +68,6 @@ workflows:
     jobs:
       - build-and-test
       - build-and-push-img:
-          requires: build-and-test
+          requires:
+            - build-and-test
           context: oc_lettings
