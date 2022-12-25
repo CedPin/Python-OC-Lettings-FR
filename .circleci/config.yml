@@ -78,7 +78,10 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
-      # - build-and-push-img:
+      - build-and-push-img:
+          requires:
+            - build-and-test
+          context: oc_lettings
+      # - deploy-to-heroku:
       #     requires:
-      #       - build-and-test
-      #     context: oc_lettings
+      #       - build-and-push-img
