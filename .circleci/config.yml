@@ -43,7 +43,7 @@ jobs:
           command: pytest
   build-and-push-img:
     docker:
-      - image: cimg/python:3.10.2
+      - image: cimg/python:3.11
     steps:
       - checkout
       - setup_remote_docker
