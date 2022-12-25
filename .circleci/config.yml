@@ -82,6 +82,6 @@ workflows:
           requires:
             - build-and-test
           context: oc_lettings
-      # - deploy-to-heroku:
-      #     requires:
-      #       - build-and-push-img
+      - deploy-to-heroku:
+          requires:
+            - build-and-push-img
