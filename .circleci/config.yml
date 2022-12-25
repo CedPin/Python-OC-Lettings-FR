@@ -64,13 +64,12 @@ jobs:
           name: Deploy to Heroku
           command: |
             heroku container:login
-            heroku create test-app
             docker login --username=_ --password=${HEROKU_API_KEY} registry.heroku.com
             docker login --username=${DOCKER_USR} --password=${DOCKER_PWD}
             docker pull ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1
-            docker tag ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1 registry.heroku.com/test-app/web
-            docker push registry.heroku.com/test-app/web
-            heroku container:release --app test-app web
+            docker tag ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1 registry.heroku.com/test-app-117/web
+            docker push registry.heroku.com/test-app-117/web
+            heroku container:release --app test-app-117 web
             
 
 # Invoke jobs via workflows
