@@ -63,13 +63,19 @@ jobs:
       - run:
           name: Deploy to Heroku
           command: |
-            heroku container:login
-            docker login --username=_ --password=${HEROKU_API_KEY} registry.heroku.com
-            docker login --username=${DOCKER_USR} --password=${DOCKER_PWD}
-            docker pull ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1
-            docker tag ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1 registry.heroku.com/test-app-117/web
-            docker push registry.heroku.com/test-app-117/web
-            heroku container:release --app test-app-117 web
+            # heroku container:login
+            # docker login --username=_ --password=${HEROKU_API_KEY} registry.heroku.com
+            # docker login --username=${DOCKER_USR} --password=${DOCKER_PWD}
+            # docker pull ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1
+            # docker tag ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1 registry.heroku.com/test-app-117/web
+            # docker push registry.heroku.com/test-app-117/web
+            # heroku container:release --app test-app-117 web
+            set -x
+            sudo curl https://cli-assets.heroku.com/install.sh | sh
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
+            docker ps
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a test-app-117 web
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a test-app-117 web
             
 
 # Invoke jobs via workflows
