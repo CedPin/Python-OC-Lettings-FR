@@ -63,8 +63,9 @@ jobs:
       - run:
           name: Deploy to Heroku
           command: |
-            heroku login
-            heroku create my-test-app
+            heroku container:login
+            docker tag oc-lettings:$CIRCLE_SHA1 registry.heroku.com/test-app/web
+            docker push registry.heroku.com/test-app/web
             
 
 # Invoke jobs via workflows
