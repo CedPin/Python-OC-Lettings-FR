@@ -56,6 +56,16 @@ jobs:
       - run:
           name: Push docker image
           command: docker push ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1
+  deploy-to-heroku:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Deploy to Heroku
+          command: |
+            heroku login
+            heroku create my-test-app
+            
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -68,3 +78,6 @@ workflows:
           requires:
             - build-and-test
           context: oc_lettings
+      - deploy-to-heroku:
+          requires:
+            - build-and-push-img
