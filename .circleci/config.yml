@@ -22,6 +22,8 @@ jobs:
     # Change the version below to your required version of python
     docker:
       - image: cimg/python:3.10.2
+        environment:
+          SECRET_KEY: ${SECRET_KEY}
     # Checkout the code as the first step. This is a dedicated CircleCI step.
     # The python orb's install-packages step will install the dependencies from a Pipfile via Pipenv by default.
     # Here we're making sure we use just use the system-wide pip. By default it uses the project root's requirements.txt.
@@ -83,7 +85,7 @@ workflows:
       - build-and-push-img:
           requires:
             - build-and-test
-          context: oc_lettings
+          # context: oc_lettings
       - deploy-to-heroku:
           requires:
             - build-and-push-img
