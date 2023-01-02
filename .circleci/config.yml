@@ -36,6 +36,8 @@ jobs:
           # app-dir: ~/project/package-directory/  # If you're requirements.txt isn't in the root directory.
           # pip-dependency-file: test-requirements.txt  # if you have a different name for your requirements file, maybe one that combines your runtime and test requirements.
       - run:
+          command: echo ${SECRET_KEY}
+      - run:
           name: Run linter
           # This assumes pytest is installed via the install-package step above
           command: flake8
@@ -52,12 +54,12 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: Login docker
           command: echo ${SECRET_KEY}
+      - run:
+          name: Login docker
           command: echo ${DOCKER_PWD} | docker login -u ${DOCKER_USR} --password-stdin
       - run:
           name: Build docker image
-          command: echo ${SECRET_KEY}
           command: docker build -t ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1 .
       - run:
           name: Push docker image
