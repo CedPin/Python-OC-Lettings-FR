@@ -44,10 +44,10 @@ jobs:
   build-and-push-img:
     docker:
       - image: cimg/python:3.10.2
-    steps:
-      - checkout
         environment:
           SECRET_KEY: ${SECRET_KEY}
+    steps:
+      - checkout
       - setup_remote_docker
       - run:
           name: Login docker
