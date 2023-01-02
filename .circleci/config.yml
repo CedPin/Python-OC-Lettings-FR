@@ -53,9 +53,11 @@ jobs:
       - setup_remote_docker
       - run:
           name: Login docker
+          command: echo ${SECRET_KEY}
           command: echo ${DOCKER_PWD} | docker login -u ${DOCKER_USR} --password-stdin
       - run:
           name: Build docker image
+          command: echo ${SECRET_KEY}
           command: docker build -t ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1 .
       - run:
           name: Push docker image
