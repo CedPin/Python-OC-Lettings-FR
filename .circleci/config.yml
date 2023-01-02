@@ -78,6 +78,7 @@ jobs:
             docker tag ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1 registry.heroku.com/test-app-117/web
             docker push registry.heroku.com/test-app-117/web
             heroku config:set SECRET_KEY=${SECRET_KEY} --app test-app-117
+            heroku config:set SENTRY_DSN=${SENTRY_DSN} --app test-app-117
             heroku container:release --app test-app-117 web
 
 # Invoke jobs via workflows

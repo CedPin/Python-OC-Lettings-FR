@@ -3,9 +3,16 @@ from django.urls import path, include
 
 from . import views
 
+
+def trigger_error(request):
+    division_by_zero = 1 / 0
+
+
 urlpatterns = [
+
     path('', views.index, name='index'),
     path('', include('profiles.urls', namespace='profiles')),
     path('', include('lettings.urls', namespace='lettings')),
     path('admin/', admin.site.urls),
+    path('sentry-debug/', trigger_error),
 ]
