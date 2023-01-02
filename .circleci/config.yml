@@ -60,7 +60,7 @@ jobs:
           command: echo ${DOCKER_PWD} | docker login -u ${DOCKER_USR} --password-stdin
       - run:
           name: Build docker image
-          command: docker build -t ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1 .
+          command: docker build --build-arg SECRET_KEY=${SECRET_KEY} -t ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1 .
       - run:
           name: Push docker image
           command: docker push ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1
