@@ -1,3 +1,5 @@
+ARG secret_key
+ENV env_sk $secret_key
 FROM python:3.11-bullseye
 WORKDIR /app
 COPY requirements.txt requirements.txt

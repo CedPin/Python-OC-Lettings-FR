@@ -48,8 +48,8 @@ jobs:
   build-and-push-img:
     docker:
       - image: cimg/python:3.10.2
-        environment:
-          SECRET_KEY: fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s
+        # environment:
+        #   SECRET_KEY: fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s
     steps:
       - checkout
       - setup_remote_docker
@@ -60,7 +60,7 @@ jobs:
           command: echo ${DOCKER_PWD} | docker login -u ${DOCKER_USR} --password-stdin
       - run:
           name: Build docker image
-          command: docker build --build-arg SECRET_KEY=${SECRET_KEY} -t ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1 .
+          command: docker build --build-arg secret_key=${SECRET_KEY} -t ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1 .
       - run:
           name: Push docker image
           command: docker push ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1
