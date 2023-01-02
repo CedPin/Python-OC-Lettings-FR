@@ -46,6 +46,8 @@ jobs:
       - image: cimg/python:3.10.2
     steps:
       - checkout
+        environment:
+          SECRET_KEY: ${SECRET_KEY}
       - setup_remote_docker
       - run:
           name: Login docker
