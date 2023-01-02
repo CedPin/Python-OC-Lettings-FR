@@ -22,8 +22,8 @@ jobs:
     # Change the version below to your required version of python
     docker:
       - image: cimg/python:3.10.2
-        environment:
-          SECRET_KEY: ${SECRET_KEY}
+        # environment:
+        #   SECRET_KEY: ${SECRET_KEY}
     # Checkout the code as the first step. This is a dedicated CircleCI step.
     # The python orb's install-packages step will install the dependencies from a Pipfile via Pipenv by default.
     # Here we're making sure we use just use the system-wide pip. By default it uses the project root's requirements.txt.
@@ -48,8 +48,8 @@ jobs:
   build-and-push-img:
     docker:
       - image: cimg/python:3.10.2
-        environment:
-          SECRET_KEY: "test_key"
+        # environment:
+        #   SECRET_KEY: "test_key"
     steps:
       - checkout
       - setup_remote_docker
@@ -77,6 +77,7 @@ jobs:
             docker pull ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1
             docker tag ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1 registry.heroku.com/test-app-117/web
             docker push registry.heroku.com/test-app-117/web
+            heroku config:set SECRET_KEY=${SECRET_KEY} --app test-app-117
             heroku container:release --app test-app-117 web
 
 # Invoke jobs via workflows
