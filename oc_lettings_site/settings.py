@@ -19,7 +19,7 @@ DEBUG = os.environ.get('DEBUG', False)
 
 PRODUCTION_APP = 'oc-lettings-117.herokuapp.com'
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', PRODUCTION_APP]
-CSRF_TRUSTED_ORIGINS = ['0.0.0.0', '127.0.0.1', PRODUCTION_APP]
+# CSRF_TRUSTED_ORIGINS = ['0.0.0.0', '127.0.0.1', PRODUCTION_APP]
 
 # Application definition
 
