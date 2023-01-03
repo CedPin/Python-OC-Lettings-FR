@@ -77,9 +77,9 @@ jobs:
             docker pull ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1
             docker tag ${DOCKER_USR}/oc-lettings:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/web
             docker push registry.heroku.com/$HEROKU_APP_NAME/web
-            heroku config:set SECRET_KEY=${SECRET_KEY} --app {$HEROKU_APP_NAME}
-            heroku config:set SENTRY_DSN=${SENTRY_DSN} --app {$HEROKU_APP_NAME}
-            heroku container:release --app {$HEROKU_APP_NAME} web
+            heroku config:set SECRET_KEY=${SECRET_KEY} --app $HEROKU_APP_NAME
+            heroku config:set SENTRY_DSN=${SENTRY_DSN} --app $HEROKU_APP_NAME
+            heroku container:release --app $HEROKU_APP_NAME web
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
