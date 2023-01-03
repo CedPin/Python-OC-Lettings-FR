@@ -91,10 +91,10 @@ workflows:
       - build-and-push-img:
           requires:
             - build-and-test
-          filters:
-            branches:
-              only:
-                - master
+          # filters:
+          #   branches:
+          #     only:
+          #       - master
           # context: oc_lettings
       - deploy-to-heroku:
           requires:
