@@ -166,4 +166,3 @@ Sentry est utilisé pour monitorer les erreurs de l'application.
 - Pour rappel, le DSN de Sentry peut se retrouver dans les paramètres du projet, puis dans Client Key DSN.
 - Une route a été ajoutée dans l'application afin de vérifier si Sentry est correctement configuré.
 - En se rendant sur https://oc-lettings-117.herokuapp.com/sentry-debug/, une erreur sera logguée dans Sentry
-- 
