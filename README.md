@@ -111,7 +111,7 @@ La création d'un compte sera nécessaire pour chacun de ces outils.
 
 ## Configuration CircleCi
 
-Lien vers le projet : https://app.circleci.com/pipelines/github/CedPi/Python-OC-Lettings-FR
+Lien vers le projet : https://app.circleci.com/pipelines/github/CedPin/Python-OC-Lettings-FR
 
 Les variables d'environnement nécessaires au bon fonctionnement du projet se trouvent dans la section
 Projects > Project Settings > Environment Variables
