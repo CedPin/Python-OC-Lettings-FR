@@ -98,3 +98,4 @@ workflows:
       - deploy-to-heroku:
           requires:
             - build-and-push-img
+
